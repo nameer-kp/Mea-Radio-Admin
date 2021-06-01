@@ -9,6 +9,7 @@ import {Form,Button } from 'react-bootstrap'
 
 function App() {
   const [isLoggedIn, setLogin] = useState(false)
+  document.title="MEA Radio"
   
   return (
     <div className="App">
