@@ -81,9 +81,9 @@ jobs:
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |-
-        sed -i -e 's/PROJECT_ID'"$PROJECT_ID"'/' deployment.yml
-        sed -i -e 's/IMAGE'"$IMAGE"'/' deployment.yml
-        sed -i -e 's/TAG'"$GITHUB_SHA"'/' deployment.yml
+        sed -i -e 's/PROJECT_ID/'"$PROJECT_ID"'/' deployment.yml
+        sed -i -e 's/IMAGE/'"$IMAGE"'/' deployment.yml
+        sed -i -e 's/TAG/'"$GITHUB_SHA"'/' deployment.yml
         kubectl apply -f deployment.yml
         kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide
