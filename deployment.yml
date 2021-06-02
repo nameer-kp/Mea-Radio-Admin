@@ -24,8 +24,7 @@ spec:
             initialDelaySeconds: 100
             periodSeconds: 5
             failureThreshold: 10
-        # image:  asia.gcr.io/PROJECT_ID/IMAGE:TAG
-        image: asia.gcr.io/tidy-visitor-314809/react-app:9c0c6abe38fa038f4db3df52f588ae3838328f2c
+        image:  asia.gcr.io/PROJECT_ID/IMAGE:TAG
         ports:
         - containerPort:  80
           hostPort: 8080
