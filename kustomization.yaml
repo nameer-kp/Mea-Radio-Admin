@@ -1,4 +1,4 @@
 commonLabels:
   app: react-app
 resources:
-  - react-deployment.yml
+  - deployment.yml
