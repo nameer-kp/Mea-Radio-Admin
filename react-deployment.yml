@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  admin-app
+  labels:
+    app:  admin-app
+spec:
+  selector:
+    matchLabels:
+      app: admin-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  admin-app
+    spec:
+      containers:
+        
+      - name:  react-app
+        readinessProbe:
+            httpGet:
+             path: /healthz
+             port: admin-port
+            initialDelaySeconds: 100
+            periodSeconds: 5
+            failureThreshold: 10
+        image:  asia.gcr.io/tidy-visitor-314809/react-app:latest
+        ports:
+        - containerPort:  80
+          hostPort: 8080
+          name:  admin-port
+      restartPolicy: Always
