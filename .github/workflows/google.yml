@@ -56,7 +56,7 @@ jobs:
     - name: React Build
       run: |-
         npm install
-        npm run-script build
+        CI=false npm run-script build
 
     # Build the Docker image
     - name: Build Docker Image
