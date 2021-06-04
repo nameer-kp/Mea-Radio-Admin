@@ -10,10 +10,10 @@ spec:
       app: admin-app
   replicas: 1
   template:
-      metadata:
-        labels:
-          app:  admin-app
-   
+    metadata:
+      labels:
+        app:  admin-app
+    spec:
       containers:
         
       - name:  react-app
