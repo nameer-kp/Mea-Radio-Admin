@@ -13,12 +13,7 @@ spec:
     metadata:
       labels:
         app:  admin-app
-    spec:
-      strategy:
-        type: RollingUpdate
-        rollingUpdate:
-          maxUnavailable: 0
-          maxSurge: 1
+   
       containers:
         
       - name:  react-app
