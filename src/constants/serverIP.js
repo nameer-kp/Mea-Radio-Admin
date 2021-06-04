@@ -1,1 +1,1 @@
-export const IP = "http://nodejs-service:3000"
+export const IP = "http://35.244.4.135:3000"
