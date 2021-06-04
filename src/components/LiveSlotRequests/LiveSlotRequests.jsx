@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import { useEffect } from "react";
+import {IP} from '../../constants/serverIP'
 export default function LiveSlotRequests() {
   const [rows, setRows] = useState(null);
   const [members,setMembers]=useState({})
   function fetchTable() {
-    fetch("http://localhost:3000/api/admin/bookslotview", {
+    fetch(IP+"/api/admin/bookslotview", {
        credentials:'include'
      })
       .then((res) => res.json())
@@ -25,7 +26,7 @@ export default function LiveSlotRequests() {
     console.log("approval request for", slot_uid);
   
     // NB: this table should only shows unapproved rows
-    fetch("http://localhost:3000/api/admin/bookslotapprove", {
+    fetch(IP+"/api/admin/bookslotapprove", {
       method: 'POST',
       credentials: 'include',
 

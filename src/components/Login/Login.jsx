@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ReactDom from 'react-dom'
-import {Form,Button, Container,Row, Card } from 'react-bootstrap'
+import { Form, Button, Container, Row, Card } from 'react-bootstrap'
+import {IP} from '../../constants/serverIP'
 import './Login.css'
 export default function Login(props){
 
@@ -14,7 +15,7 @@ export default function Login(props){
     function handleSubmit(event){
         event.preventDefault();
         
-        fetch('http://35.200.150.147:3000/api/admin/login', {
+        fetch(IP+'/api/admin/login', {
             method: "POST",
             credentials:'include',
             headers: {

@@ -1,5 +1,5 @@
 import React,{useRef, useState} from 'react'
-
+import {IP} from '../../constants/serverIP'
 export default function RadioLoop() {
     const [files, setFile] = useState('')
     const prev =useRef()
@@ -16,7 +16,7 @@ export default function RadioLoop() {
                 formData.append('files', files[i])
             }
             
-            fetch('http://localhost:3000/api/admin/updateradioloop', {
+            fetch(IP+'/api/admin/updateradioloop', {
                 method: 'POST',
                 credentials:'include',
                 body:formData

@@ -1,10 +1,10 @@
 import {Table,Button} from 'react-bootstrap'
 import React,{useState,useEffect} from "react";
-
+import {IP} from '../../constants/serverIP'
 export default function OfflineSlotRequests() {
   const [rows, setRows] = useState(null);
   function fetchTable() {
-    fetch("http://localhost:3000/api/admin/nonliveview", {
+    fetch(IP+"/api/admin/nonliveview", {
       credentials:'include',
     })
       .then((res) => res.json())
@@ -27,7 +27,7 @@ export default function OfflineSlotRequests() {
     console.log("approval request for", slot_uid);
 
     
-    fetch("http://localhost:3000/api/admin/nonliveapprove", {
+    fetch(IP+"/api/admin/nonliveapprove", {
       method: "POST",
       credentials:'include',
       headers: {
@@ -76,7 +76,7 @@ export default function OfflineSlotRequests() {
                       .toString()
                       .replace("GMT+0530 (India Standard Time)", "")}
                 </td>
-                <td><audio src={"http://localhost:3000/audio/"+row['slot_uid']+'.mp3'} controls></audio></td> {/* here we can append slotid with server ip..since we know the src will be same slotid*/}
+                <td><audio src={IP+"/audio/"+row['slot_uid']+'.mp3'} controls></audio></td> {/* here we can append slotid with server ip..since we know the src will be same slotid*/}
                 
                 <td>
                   <Button
