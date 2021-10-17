@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Table, Button } from "react-bootstrap";
-import {IP} from '../../constants/serverIP'
+import {IP,MONGOIP} from '../../constants/serverIP'
 export default function ShowsUpdation() {
   const [availableRows, setAvailableRows] = useState(null);
   const [currentRows, setCurrentRows] = useState(null);
@@ -8,7 +8,9 @@ export default function ShowsUpdation() {
   const [thumbNails, setThumbNails] = useState({});
 
   function fetchAvailableTable() {
-    fetch(IP+"/api/admin/getavailableshows")
+    fetch(IP+"/api/admin/getavailableshows",{
+      credentials:'include'
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.length > 0) {
@@ -28,7 +30,9 @@ export default function ShowsUpdation() {
   }
 
   function fetchCurrentTable() {
-    fetch(IP+"/api/admin/getcurrentshow")
+    fetch(IP+"/api/admin/getcurrentshow",{
+      credentials:'include'
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.length > 0) {
@@ -53,6 +57,7 @@ export default function ShowsUpdation() {
     let blob = await fetch(thumbNails[slot_uid]).then((r) => r.blob());
     formData.append("thumbnail", blob, slot_uid);
     fetch(IP+"/api/admin/addtoshow", {
+      credentials:'include',
       method: "POST",
       body: formData,
     })
@@ -77,6 +82,7 @@ export default function ShowsUpdation() {
     
     fetch(IP+'/api/admin/removeshow', {
       method: 'POST',
+      credentials:'include',
       headers: {
         'Content-Type':'application/json',
       },
@@ -126,7 +132,7 @@ export default function ShowsUpdation() {
                 <td>
                   <audio
                     src={
-                      IP+"/audio/" + row["slot_uid"] + ".mp3"
+                      MONGOIP+"/api/app/shows/audio/" + row["slot_uid"]
                     }
                     controls
                   ></audio>

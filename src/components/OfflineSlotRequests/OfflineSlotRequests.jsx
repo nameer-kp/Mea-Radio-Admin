@@ -76,7 +76,7 @@ export default function OfflineSlotRequests() {
                       .toString()
                       .replace("GMT+0530 (India Standard Time)", "")}
                 </td>
-                <td><audio src={IP+"/audio/"+row['slot_uid']+'.mp3'} controls></audio></td> {/* here we can append slotid with server ip..since we know the src will be same slotid*/}
+                <td><audio src={"http://localhost:4000/api/app/shows/audio/"+row['slot_uid']} controls></audio></td> {/* here we can append slotid with server ip..since we know the src will be same slotid*/}
                 
                 <td>
                   <Button

@@ -1,1 +1,2 @@
-export const IP = "http://35.244.4.135:3000"
+export const IP = "http://localhost:3000"
+export const MONGOIP="http://localhost:4000"
